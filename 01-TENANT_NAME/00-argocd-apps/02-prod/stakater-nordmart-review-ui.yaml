@@ -13,8 +13,8 @@ spec:
     server: 'https://kubernetes.default.svc'
   project: gabbar
   source:
-    path: 01-gabbar/02-stakater-nordmart-review-ui/03-prod
-    repoURL: 'https://github.com/stakater/nordmart-apps-gitops-config.git'
+    path: 01-gabbar/04-stakater-nordmart-review-ui/03-prod
+    repoURL: 'https://github.com/<GROUP_NAME>/nordmart-apps-gitops-config.git'
     targetRevision: main
   syncPolicy:
     automated:

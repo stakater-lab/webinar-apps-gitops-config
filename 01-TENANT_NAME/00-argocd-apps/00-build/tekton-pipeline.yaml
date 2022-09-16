@@ -13,8 +13,8 @@ spec:
     server: 'https://kubernetes.default.svc'
   project: <TENANT_NAME>
   source:
-    path: 01-<TENANT_NAME>/00-tekton-pipelines/00-build
-    repoURL: 'https://github.com/stakater/nordmart-apps-gitops-config.git'
+    path: 01-<TENANT_NAME>/01-tekton-pipelines/00-build
+    repoURL: 'https://github.com/<GROUP_NAME>/nordmart-apps-gitops-config.git'
     targetRevision: HEAD
   syncPolicy:
     automated:
