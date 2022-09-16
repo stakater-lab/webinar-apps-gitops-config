@@ -1,0 +1,22 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: <TENANT_NAME>-dev-stakater-nordmart-review
+  namespace: openshift-gitops
+  labels:
+    stakater.com/tenant: <TENANT_NAME>
+    stakater.com/env: dev
+    stakater.com/kind: dev
+spec:
+  destination:
+    namespace: <TENANT_NAME>-dev
+    server: 'https://kubernetes.default.svc'
+  source:
+    path: 01-<TENANT_NAME>/01-stakater-nordmart-review/01-dev
+    repoURL: 'https://github.com/stakater/nordmart-apps-gitops-config.git'
+    targetRevision: HEAD
+  project: <TENANT_NAME>
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
