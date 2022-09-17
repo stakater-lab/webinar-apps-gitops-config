@@ -9,7 +9,7 @@ spec:
     server: 'https://kubernetes.default.svc'
   source:
     path: 01-<TENANT_NAME>/00-argocd-apps/01-dev/
-    repoURL: 'https://github.com/<GROUP_NAME>/nordmart-apps-gitops-config.git'
+    repoURL: 'https://gitlab.apps.devtest.vxdqgl7u.kubeapp.cloud/<GROUP_NAME>/nordmart-apps-gitops-config.git'
     targetRevision: main
     directory:
        recurse: true
