@@ -1,0 +1,20 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: <TENANT_NAME>-preview
+  namespace: openshift-gitops
+spec:
+  destination:
+    namespace: <TENANT_NAME>-preview
+    server: 'https://kubernetes.default.svc'
+  source:
+    path: 01-<TENANT_NAME>/00-argocd-apps/00-preview/
+    repoURL: 'https://gitlab.apps.devtest.vxdqgl7u.kubeapp.cloud/<GROUP_NAME>/nordmart-apps-gitops-config.git'
+    targetRevision: main
+    directory:
+       recurse: true
+  project: <TENANT_NAME>
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
