@@ -14,7 +14,7 @@ spec:
   project: <TENANT_NAME>
   source:
     path: 01-<TENANT_NAME>/01-tekton-pipelines/00-build
-    repoURL: 'https://gitlab.apps.devtest.vxdqgl7u.kubeapp.cloud/<GROUP_NAME>/nordmart-apps-gitops-config.git'
+    repoURL: 'https://gitlab.apps.devtest.vxdqgl7u.kubeapp.cloud/<TENANT_NAME>/nordmart-apps-gitops-config.git'
     targetRevision: HEAD
   syncPolicy:
     automated:
