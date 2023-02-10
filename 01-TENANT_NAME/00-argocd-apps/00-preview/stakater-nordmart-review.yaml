@@ -13,7 +13,7 @@ spec:
     server: 'https://kubernetes.default.svc'
   source:
     path: 01-<TENANT_NAME>/02-stakater-nordmart-review/00-preview
-    repoURL: 'https://gitlab.apps.devtest.vxdqgl7u.kubeapp.cloud/<TENANT_NAME>/nordmart-apps-gitops-config.git'
+    repoURL: 'https://gitlab.apps.devtest.vxdqgl7u.kubeapp.cloud/<TENANT_NAME>/apps-gitops-config.git'
     targetRevision: HEAD
   project: <TENANT_NAME>
   syncPolicy:
