@@ -14,7 +14,7 @@ spec:
   project: <TENANT_NAME>
   source:
     path: 01-<TENANT_NAME>/03-stakater-nordmart-review-ui/00-preview
-    repoURL: 'https://gitlab.apps.devtest.vxdqgl7u.kubeapp.cloud/<TENANT_NAME>/nordmart-apps-gitops-config.git'
+    repoURL: 'https://gitlab.apps.devtest.vxdqgl7u.kubeapp.cloud/<TENANT_NAME>/apps-gitops-config.git'
     targetRevision: HEAD
   syncPolicy:
     automated:
