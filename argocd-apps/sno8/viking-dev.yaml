@@ -10,7 +10,7 @@ spec:
   project: viking
   source:
     path: viking/argocd-apps/dev
-    repoURL: 'https://github.com/stakater-lab/webinar-apps-gitops-config/'
+    repoURL: 'https://github.com/stakater-lab/webinar-apps-gitops-config'
     targetRevision: HEAD
   syncPolicy:
     automated:
