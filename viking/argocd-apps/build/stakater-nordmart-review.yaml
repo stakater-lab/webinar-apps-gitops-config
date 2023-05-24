@@ -1,16 +1,16 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: TENANT_NAME-ENV_NAME-APP_NAME
+  name: viking-build-stakater-nordmart-review
   namespace: openshift-gitops
 spec:
   destination:
-    namespace: TARGET_NAMESPACE
+    namespace: viking-build
     server: 'https://kubernetes.default.svc'
-  project: TENANT_NAME
+  project: viking
   source:
-    path: TENANT_NAME/APP_NAME/ENV_NAME
-    repoURL: 'APPS_GITOPS_REPO_URL'
+    path: viking/stakater-nordmart-review/build
+    repoURL: 'https://github.com/stakater-lab/webinar-apps-gitops-config/'
     targetRevision: HEAD
   syncPolicy:
     automated:
