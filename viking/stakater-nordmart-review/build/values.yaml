@@ -27,6 +27,9 @@ stakater-tekton-chart:
           - name: url
             value: "https://github.com/stakater-lab/stakater-nordmart-review.git"
       - defaultTaskName: stakater-create-git-tag-0-0-3
+        workspaces:
+          - name: source
+            workspace: source   
       - defaultTaskName: stakater-code-linting-0-0-1
       - defaultTaskName: stakater-kube-linting-0-0-1
         runAfter:
