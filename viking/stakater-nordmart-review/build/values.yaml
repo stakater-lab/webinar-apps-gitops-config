@@ -5,25 +5,16 @@ stakater-tekton-chart:
       volumeClaimTemplate:
         accessModes: ReadWriteOnce
         resourcesRequestsStorage: 1Gi
-    - name: ssh-directory
-      secret:
-        secretName: mto-console-repo-ssh-creds
     - name: repo-token
       secret:
         secretName: stakater-ab-token
-  # Dummy change to fix argocd error
   pipelines:
     finally:
       - defaultTaskName: stakater-set-commit-status-0-0-3
         name: stakater-set-commit-status
         params:
-          - name: GIT_SECRET_NAME
-            value: stakater-ab-token
-      - defaultTaskName: stakater-remove-environment-0-0-1
-        when:
-          - input: $(tasks.stakater-github-update-cd-repo-0-0-2.status)
-            operator: notin
-            values: ["Succeeded"]
+        - name: GIT_SECRET_NAME
+          value: stakater-ab-token
     tasks:
       - defaultTaskName: stakater-set-commit-status-0-0-3
         params:
@@ -35,20 +26,11 @@ stakater-tekton-chart:
         params:
           - name: url
             value: "https://github.com/stakater-lab/stakater-nordmart-review.git"
-
       - defaultTaskName: stakater-create-git-tag-0-0-3
-      - defaultTaskName: stakater-create-environment-0-0-2
-        params:
-          - name: IMAGE_TAG
-            value: $(tasks.stakater-create-git-tag-0-0-3.results.GIT_TAG)
       - defaultTaskName: stakater-code-linting-0-0-1
       - defaultTaskName: stakater-kube-linting-0-0-1
         runAfter:
-          - stakater-create-environment-0-0-2
-      - defaultTaskName: stakater-sonarqube-scan-0-0-2
-        runAfter:
-          - stakater-kube-linting-0-0-1
-          - stakater-code-linting-0-0-1
+          - stakater-create-git-tag-0-0-3
       - defaultTaskName: stakater-build-image-flag-0-0-2
       - defaultTaskName: stakater-buildah-0-0-2
         name: build-and-push
@@ -67,30 +49,6 @@ stakater-tekton-chart:
             value: $(tasks.stakater-build-image-flag-0-0-2.results.BUILD_IMAGE)
         runAfter:
           - build-and-push
-      #      - defaultTaskName: stakater-rox-image-scan-0-0-2
-      #        params:
-      #          - name: IMAGE
-      #            value: $(params.image_registry_url):$(tasks.stakater-create-git-tag-0-0-3.results.GIT_TAG)
-      #          - name: IMAGE_DIGEST
-      #            value: $(tasks.build-and-push.results.IMAGE_DIGEST)
-      #          - name: BUILD_IMAGE
-      #            value: $(tasks.stakater-build-image-flag-0-0-2.results.BUILD_IMAGE)
-      #        runAfter:
-      #          - build-and-push
-      #      - defaultTaskName: stakater-rox-image-check-0-0-2
-      #        params:
-      #          - name: IMAGE
-      #            value: $(params.image_registry_url):$(tasks.stakater-create-git-tag-0-0-3.results.GIT_TAG)
-      #          - name: BUILD_IMAGE
-      #            value: $(tasks.stakater-build-image-flag-0-0-2.results.BUILD_IMAGE)
-      #        runAfter:
-      #          - build-and-push
-      #      - defaultTaskName: stakater-rox-deployment-check-0-0-2
-      #        params:
-      #          - name: BUILD_IMAGE
-      #            value: $(tasks.stakater-build-image-flag-0-0-2.results.BUILD_IMAGE)
-      #        runAfter:
-      #          - build-and-push
       - defaultTaskName: stakater-checkov-scan-0-0-2
         params:
           - name: BUILD_IMAGE
@@ -104,18 +62,15 @@ stakater-tekton-chart:
               $(params.image_registry_url):$(tasks.stakater-create-git-tag-0-0-3.results.GIT_TAG)
         runAfter:
           - stakater-trivy-scan-0-0-1
-          #          - stakater-rox-deployment-check-0-0-2
-          #          - stakater-rox-image-scan-0-0-2
-          #          - stakater-rox-image-check-0-0-2
           - stakater-checkov-scan-0-0-2
       - defaultTaskName: stakater-helm-push-0-0-2
         params:
-          - name: semVer
-            value: $(tasks.stakater-create-git-tag-0-0-3.results.GIT_TAG)
+        - name: semVer
+          value: $(tasks.stakater-create-git-tag-0-0-3.results.GIT_TAG)
       - defaultTaskName: stakater-github-update-cd-repo-0-0-2
         params:
           - name: CD_REPO_URL
-            value: 'git@github.com:stakater-ab/stakater-apps-gitops-prod.git'
+            value: 'https://github.com/stakater-lab/webinar-apps-gitops-config.git'
           - name: IMAGE_TAG
             value: $(tasks.stakater-create-git-tag-0-0-3.results.GIT_TAG)
       - defaultTaskName: stakater-push-main-tag-0-0-2
@@ -126,16 +81,9 @@ stakater-tekton-chart:
   triggertemplate:
     serviceAccountName: stakater-tekton-builder
     pipelineRunNamePrefix: $(tt.params.repoName)-$(tt.params.prnumberBranch)
-    pipelineRunPodTemplate:
-      tolerations:
-        - key: "pipeline"
-          operator: "Exists"
-          effect: "NoExecute"
   eventlistener:
     serviceAccountName: stakater-tekton-builder
     triggers:
-      - name: stakater-pr-cleaner-v2-pullrequest-merge
-        create: false
       - name: github-pullrequest-create
         bindings:
           - ref: stakater-pr-v1
