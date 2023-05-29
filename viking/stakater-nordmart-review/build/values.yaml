@@ -5,6 +5,9 @@ stakater-tekton-chart:
       volumeClaimTemplate:
         accessModes: ReadWriteOnce
         resourcesRequestsStorage: 1Gi
+    - name: ssh-directory
+      secret:
+        secretName: mto-console-repo-ssh-creds
     - name: repo-token
       secret:
         secretName: stakater-ab-token
