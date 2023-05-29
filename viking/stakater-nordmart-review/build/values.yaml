@@ -95,7 +95,7 @@ stakater-tekton-chart:
 
   triggertemplate:
     serviceAccountName: stakater-tekton-builder
-    pipelineRunNamePrefix: $(tt.params.repoName)-$(tt.params.prnumberBranch)
+    pipelineRunNamePrefix: stakater-nordmart-review-$(tt.params.prnumberBranch)
   eventlistener:
     serviceAccountName: stakater-tekton-builder
     triggers:
