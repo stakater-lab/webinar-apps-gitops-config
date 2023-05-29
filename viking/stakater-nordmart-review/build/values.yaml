@@ -26,10 +26,22 @@ stakater-tekton-chart:
         params:
           - name: url
             value: "https://github.com/stakater-lab/stakater-nordmart-review.git"
-      - defaultTaskName: stakater-create-git-tag-0-0-3
+      - name: stakater-create-git-tag-0-0-3
+        taskRef:
+          task: stakater-create-git-tag-0.0.3
+          kind: ClusterTask
+        params:
+          - name: PR_NUMBER
+            value: $(params.prnumber)
+          - name: GIT_REVISION
+            value: $(params.gitrevision)
+          - name: OLD_COMMIT
+            value: $(params.oldcommit)
+          - name: ACTION
+            value: $(params.action)
         workspaces:
           - name: source
-            workspace: source   
+            workspace: source
       - defaultTaskName: stakater-code-linting-0-0-1
       - defaultTaskName: stakater-kube-linting-0-0-1
         runAfter:
