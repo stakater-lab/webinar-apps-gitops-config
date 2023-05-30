@@ -1,7 +1,7 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: team-frontend-dev-app-companydocs-ui
+  name: app-companydocs-ui-dev
   namespace: rh-openshift-gitops-instance
 spec:
   destination:
