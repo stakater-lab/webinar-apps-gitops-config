@@ -1,0 +1,18 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: team-frontend-dev-app-todolist
+  namespace: rh-openshift-gitops-instance
+spec:
+  destination:
+    namespace: viking-dev
+    server: 'https://kubernetes.default.svc'
+  project: default
+  source:
+    path: viking/stakater-nordmart-review/dev
+    repoURL: 'https://github.com/stakater-lab/webinar-apps-gitops-config'
+    targetRevision: HEAD
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
