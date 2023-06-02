@@ -1,1 +1,8 @@
-
+apiVersion: v2
+name: review-web
+description: A Helm chart for Kubernetes
+dependencies:
+  - name: stakater-nordmart-review-ui
+    version: "1.0.0"
+    repository: https://nexus-helm-stakater-nexus.apps.vmw-sno8.lab.kubeapp.cloud/repository/helm-charts/
+version: 1.0.0
