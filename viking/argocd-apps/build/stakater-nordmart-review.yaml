@@ -9,7 +9,7 @@ spec:
     server: 'https://kubernetes.default.svc'
   project: viking
   source:
-    path: viking/stakater-nordmart-review/build
+    path: viking/stakater-nordmart-review-ui/build
     repoURL: 'https://github.com/stakater-lab/webinar-apps-gitops-config'
     targetRevision: HEAD
   syncPolicy:
