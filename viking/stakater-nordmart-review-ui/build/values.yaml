@@ -1,5 +1,5 @@
 stakater-tekton-chart:
-  name: stakater-mto-console-pipeline
+  name: webinar-pipeline
   workspaces:
     - name: source
       volumeClaimTemplate:
