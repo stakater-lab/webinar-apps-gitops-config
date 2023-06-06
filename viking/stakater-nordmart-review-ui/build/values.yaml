@@ -26,7 +26,7 @@ stakater-tekton-chart:
       - defaultTaskName: stakater-create-git-tag-0-0-3
       - defaultTaskName: stakater-build-image-flag-0-0-2
         runAfter:
-          - takater-create-git-tag-0-0-3
+          - stakater-create-git-tag-0-0-3
       - defaultTaskName: stakater-buildah-0-0-2
         name: build-and-push
         params:
