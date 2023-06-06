@@ -60,11 +60,11 @@ stakater-tekton-chart:
           - name: IMAGE_TAG
             value: $(tasks.stakater-create-git-tag-0-0-3.results.GIT_TAG)
           - name: GITHUB_TOKEN_SECRET
-            value: "mto-console-repo-ssh-creds"
+            value: ""
 
   triggertemplate:
     serviceAccountName: stakater-tekton-builder
-    pipelineRunNamePrefix: $(tt.params.repoName)-$(tt.params.prnumberBranch)
+    pipelineRunNamePrefix: stakater-nordmart-review-ui-$(tt.params.prnumberBranch)
     pipelineRunPodTemplate:
       tolerations:
         - key: "pipeline"
