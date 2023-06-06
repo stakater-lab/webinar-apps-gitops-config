@@ -25,7 +25,7 @@ stakater-tekton-chart:
             workspace: ssh-directory
       - defaultTaskName: stakater-create-git-tag-0-0-3
       - defaultTaskName: stakater-build-image-flag-0-0-2
-         runAfter:
+        runAfter:
           - takater-create-git-tag-0-0-3
       - defaultTaskName: stakater-buildah-0-0-2
         name: build-and-push
