@@ -10,7 +10,7 @@ spec:
   project: arsenal
   source:
     path: arsenal/argocd-apps/dev
-    repoURL: 'https://github.com/stakater-lab/webinar-apps-gitops-config'
+    repoURL: 'https://github.com/DESTINATION_ORG/webinar-apps-gitops-config'
     targetRevision: HEAD
   syncPolicy:
     automated:

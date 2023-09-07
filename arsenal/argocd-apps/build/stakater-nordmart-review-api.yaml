@@ -14,7 +14,7 @@ spec:
   project: arsenal
   source:
     path: arsenal/stakater-nordmart-review-api/build
-    repoURL: 'https://github.com/stakater/webinar-apps-gitops-config.git'
+    repoURL: 'https://github.com/DESTINATION_ORG/webinar-apps-gitops-config.git'
     targetRevision: HEAD
   syncPolicy:
     automated:
