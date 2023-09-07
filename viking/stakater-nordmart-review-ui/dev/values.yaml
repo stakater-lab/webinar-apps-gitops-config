@@ -1,6 +1,0 @@
-stakater-nordmart-review-ui:
-  application:
-    deployment:
-      image:
-        repository: nexus-docker-stakater-nexus.apps.vmw-sno8.lab.kubeapp.cloud/stakater-nordmart-review-ui
-        tag: 1.0.0

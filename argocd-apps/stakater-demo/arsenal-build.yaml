@@ -1,15 +1,15 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: app-todolist-dev
+  name: arsenal-build
   namespace: rh-openshift-gitops-instance
 spec:
   destination:
-    namespace: viking-dev
+    namespace: rh-openshift-gitops-instance
     server: 'https://kubernetes.default.svc'
-  project: default
+  project: arsenal
   source:
-    path: viking/stakater-nordmart-review/dev2
+    path: arsenal/argocd-apps/build
     repoURL: 'https://github.com/stakater-lab/webinar-apps-gitops-config'
     targetRevision: HEAD
   syncPolicy:
