@@ -1,7 +1,7 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: arsenal-dev-stakater-nordmart-reivew
+  name: arsenal-dev-stakater-nordmart-reivew-api
   namespace: rh-openshift-gitops-instance
   labels:
     stakater.com/tenant: arsenal
@@ -13,7 +13,7 @@ spec:
     server: 'https://kubernetes.default.svc'
   project: arsenal
   source:
-    path: arsenal/stakater-nordmart-review-web/dev
+    path: arsenal/stakater-nordmart-review-api/dev
     repoURL: 'https://github.com/stakater/webinar-apps-gitops-config.git'
     targetRevision: HEAD
   syncPolicy:

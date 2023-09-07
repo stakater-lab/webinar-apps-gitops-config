@@ -1,7 +1,7 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: arsenal-dev-stakater-nordmart-reivew
+  name: arsenal-dev-stakater-nordmart-reivew-web
   namespace: rh-openshift-gitops-instance
   labels:
     stakater.com/tenant: arsenal
