@@ -1,0 +1,13 @@
+apiVersion: pipelinesascode.tekton.dev/v1alpha1
+kind: Repository
+metadata:
+  name: stakater-nordmart-review-api
+spec:
+  git_provider:
+    secret:
+      key: provider.token
+      name: github-webhook-config
+    webhook_secret:
+      key: webhook.secret
+      name: github-webhook-config
+  url: 'https://github.com/stakater-lab/stakater-nordmart-review-api'
