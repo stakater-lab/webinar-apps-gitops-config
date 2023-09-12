@@ -1,14 +1,14 @@
 apiVersion: external-secrets.io/v1beta1
 kind: ExternalSecret
 metadata:
-  name: nexus-helm-auth-forked
+  name: helm-reg-creds
 spec:
   secretStoreRef:
     name: tenant-vault-secret-store
     kind: SecretStore
   refreshInterval: "1m0s"
   target:
-    name: nexus-helm-auth-forked
+    name: helm-reg-creds
     creationPolicy: 'Owner'
     template:
       type: Opaque
@@ -18,9 +18,9 @@ spec:
   data:
   - secretKey: username
     remoteRef:
-      key: nexus-helm-auth-forked
+      key: helm-reg-creds
       property: username
   - secretKey: password
     remoteRef:
-      key: nexus-helm-auth-forked
+      key: helm-reg-creds
       property: password
