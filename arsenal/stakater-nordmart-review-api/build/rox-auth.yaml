@@ -12,5 +12,3 @@ spec:
     creationPolicy: 'Owner'
     template:
       type: Opaque
-  dataFrom:
-    - key: arsenal/rox-auth
