@@ -12,5 +12,11 @@ spec:
     creationPolicy: 'Owner'
     template:
       type: Opaque
-  dataFrom:
-    - key: arsenal/nexus-docker-config
+      data:
+        .dockerconfigjson: "{{ .dockerconfigjson | toString }}"
+        config: "{{ .dockerconfigjson | toString }}"
+  data:
+  - secretKey: dockerconfigjson
+    remoteRef:
+      key: nexus-docker-config
+      property: .dockerconfigjson
