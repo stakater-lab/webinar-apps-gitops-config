@@ -12,7 +12,7 @@ spec:
     creationPolicy: 'Owner'
     template:
       data:
-        id_rsa: "{{ .id_rsa | b64enc | toString }}"
+        id_rsa: "{{ .id_rsa | b64dec | toString }}"
   data:
   - secretKey: id_rsa
     remoteRef:
