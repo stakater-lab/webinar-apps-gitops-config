@@ -10,4 +10,4 @@ spec:
     webhook_secret:
       key: webhook.secret
       name: github-webhook-config
-  url: 'https://github.com/stakater-lab/stakater-nordmart-review-api'
+  url: 'https://github.com/DESTINATION_ORG/stakater-nordmart-review-api'
