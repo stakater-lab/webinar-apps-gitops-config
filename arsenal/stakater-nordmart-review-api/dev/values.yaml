@@ -1,0 +1,6 @@
+stakater-nordmart-review-api:
+  application:
+    deployment:
+      image:
+        repository: nexus-docker-stakater-nexus.ROUTE_SUBDOMAIN/stakater-nordmart-review
+        tag: 1.0.0
