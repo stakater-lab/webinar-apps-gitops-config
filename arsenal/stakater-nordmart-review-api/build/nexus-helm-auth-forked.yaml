@@ -12,5 +12,15 @@ spec:
     creationPolicy: 'Owner'
     template:
       type: Opaque
-  dataFrom:
-    - key: arsenal/nexus-helm-auth-forked
+      data:
+        username: "{{ .username | toString }}"
+        password: "{{ .password | toString }}"
+  data:
+  - secretKey: username
+    remoteRef:
+      key: nexus-helm-auth-forked
+      property: username
+  - secretKey: password
+    remoteRef:
+      key: nexus-helm-auth-forked
+      property: password
