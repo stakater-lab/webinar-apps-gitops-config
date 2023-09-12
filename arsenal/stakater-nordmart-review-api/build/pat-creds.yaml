@@ -1,0 +1,26 @@
+apiVersion: external-secrets.io/v1beta1
+kind: ExternalSecret
+metadata:
+  name: pat-creds
+spec:
+  secretStoreRef:
+    name: tenant-vault-secret-store
+    kind: SecretStore
+  refreshInterval: "1m0s"
+  target:
+    name: pat-creds
+    creationPolicy: 'Owner'
+    template:
+      data:
+        password: "{{ .password | toString }}"
+        username: "{{ .username | toString }}"
+        email: ""
+  data:
+  - secretKey: password
+    remoteRef:
+      key: pat-creds
+      property: password
+  - secretKey: username
+    remoteRef:
+      key: pat-creds
+      property: username
