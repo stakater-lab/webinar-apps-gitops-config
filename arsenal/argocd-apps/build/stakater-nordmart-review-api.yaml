@@ -6,7 +6,10 @@ metadata:
   labels:
     stakater.com/tenant: arsenal
     stakater.com/env: build
-    stakater.com/kind: build    
+    stakater.com/kind: build
+  finalizers:
+    # The default behaviour is foreground cascading deletion
+    - resources-finalizer.argocd.argoproj.io
 spec:
   destination:
     namespace: arsenal-build
