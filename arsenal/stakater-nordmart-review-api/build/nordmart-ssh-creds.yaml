@@ -8,7 +8,7 @@ spec:
     kind: SecretStore
   refreshInterval: "1m0s"
   target:
-    name: nordmart-ssh-creds
+    name: nordmart-api-ssh-creds
     creationPolicy: 'Owner'
     template:
       data:
