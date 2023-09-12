@@ -14,9 +14,13 @@ spec:
       type: Opaque
       data:
         .dockerconfigjson: "{{ .dockerconfigjson | toString }}"
-        config: "{{ .dockerconfigjson | toString }}"
+        config: "{{ .config | toString }}"
   data:
   - secretKey: dockerconfigjson
     remoteRef:
       key: docker-reg-creds
       property: .dockerconfigjson
+  - secretKey: config
+    remoteRef:
+      key: docker-reg-creds
+      property: config
