@@ -1,14 +1,14 @@
 apiVersion: external-secrets.io/v1beta1
 kind: ExternalSecret
 metadata:
-  name: nexus-docker-config
+  name: docker-reg-creds
 spec:
   secretStoreRef:
     name: tenant-vault-secret-store
     kind: SecretStore
   refreshInterval: "1m0s"
   target:
-    name: nexus-docker-config
+    name: docker-reg-creds
     creationPolicy: 'Owner'
     template:
       type: Opaque
@@ -18,5 +18,5 @@ spec:
   data:
   - secretKey: dockerconfigjson
     remoteRef:
-      key: nexus-docker-config
+      key: docker-reg-creds
       property: .dockerconfigjson
