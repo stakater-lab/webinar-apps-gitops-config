@@ -1,14 +1,14 @@
 apiVersion: external-secrets.io/v1beta1
 kind: ExternalSecret
 metadata:
-  name: sonarqube-creds
+  name: sonar-creds
 spec:
   secretStoreRef:
     name: tenant-vault-secret-store
     kind: SecretStore
   refreshInterval: "1m0s"
   target:
-    name: sonarqube-creds
+    name: sonar-creds
     creationPolicy: 'Owner'
     template:
       type: Opaque
@@ -18,9 +18,9 @@ spec:
   data:
   - secretKey: username
     remoteRef:
-      key: sonarqube-creds
+      key: sonar-creds
       property: username
   - secretKey: password
     remoteRef:
-      key: sonarqube-creds
+      key: sonar-creds
       property: password
