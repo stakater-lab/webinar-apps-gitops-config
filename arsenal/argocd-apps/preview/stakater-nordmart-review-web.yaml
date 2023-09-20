@@ -1,0 +1,22 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: arsenal-preview-stakater-nordmart-reivew-web
+  namespace: rh-openshift-gitops-instance
+  labels:
+    stakater.com/tenant: arsenal
+    stakater.com/env: preview
+    stakater.com/kind: preview    
+spec:
+  destination:
+    namespace: arsenal-build
+    server: 'https://kubernetes.default.svc'
+  project: arsenal
+  source:
+    path: arsenal/stakater-nordmart-review-web/preview
+    repoURL: 'https://github.com/DESTINATION_ORG/webinar-apps-gitops-config.git'
+    targetRevision: HEAD
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
