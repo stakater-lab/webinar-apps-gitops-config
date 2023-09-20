@@ -1,0 +1,21 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: arsenal-preview
+  namespace: rh-openshift-gitops-instance
+  finalizers:
+    # The default behaviour is foreground cascading deletion
+    - resources-finalizer.argocd.argoproj.io
+spec:
+  destination:
+    namespace: arsenal-preview
+    server: 'https://kubernetes.default.svc'
+  project: arsenal
+  source:
+    path: arsenal/argocd-apps/preview
+    repoURL: 'https://github.com/DESTINATION_ORG/webinar-apps-gitops-config'
+    targetRevision: HEAD
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
