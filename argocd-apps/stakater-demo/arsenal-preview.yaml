@@ -8,7 +8,7 @@ metadata:
     - resources-finalizer.argocd.argoproj.io
 spec:
   destination:
-    namespace: arsenal-preview
+    namespace: arsenal-build
     server: 'https://kubernetes.default.svc'
   project: arsenal
   source:
