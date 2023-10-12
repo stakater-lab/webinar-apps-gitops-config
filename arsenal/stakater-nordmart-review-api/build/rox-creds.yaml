@@ -1,0 +1,26 @@
+apiVersion: external-secrets.io/v1beta1
+kind: ExternalSecret
+metadata:
+  name: rox-creds
+spec:
+  secretStoreRef:
+    name: tenant-vault-secret-store
+    kind: SecretStore
+  refreshInterval: "1m0s"
+  target:
+    name: rox-auth
+    creationPolicy: 'Owner'
+    template:
+      type: Opaque
+      data:
+        rox-api-token: "{{ rox-api-token | toString }}"
+        rox-central-endpoint: "{{ rox-central-endpoint | toString }}"
+  data:
+  - secretKey: rox-api-token
+    remoteRef:
+      key: rox-creds
+      property: rox-api-token
+  - secretKey: rox-central-endpoint
+    remoteRef:
+      key: rox-creds
+      property: rox-central-endpoint
