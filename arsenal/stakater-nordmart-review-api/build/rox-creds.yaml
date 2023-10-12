@@ -13,8 +13,8 @@ spec:
     template:
       type: Opaque
       data:
-        rox-api-token: "{{ rox-api-token | toString }}"
-        rox-central-endpoint: "{{ rox-central-endpoint | toString }}"
+        rox-api-token: "{{ .rox-api-token | toString }}"
+        rox-central-endpoint: "{{ .rox-central-endpoint | toString }}"
   data:
   - secretKey: rox-api-token
     remoteRef:
