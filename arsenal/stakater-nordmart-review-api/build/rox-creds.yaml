@@ -8,7 +8,7 @@ spec:
     kind: SecretStore
   refreshInterval: "1m0s"
   target:
-    name: rox-auth
+    name: rox-creds
     creationPolicy: 'Owner'
     template:
       type: Opaque
